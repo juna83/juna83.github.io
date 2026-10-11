@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: one 1080px column; plant-floor ledger feel — mono doc labels, amber marks, navy ground in dark */
+/* Layout: full-width page, fluid gutters; plant-floor ledger feel — mono doc labels, amber marks, navy ground in dark */
 :root{
   --bg:#F5F6F8; --surface:#FFFFFF; --fg:#13202E; --muted:#4F5D6C; --line:#D9DEE5;
   --accent:#A65F08; --accent-soft:#F6E7D0; --ink:#0F1E2E;
@@ -25,7 +25,7 @@
 
 *{box-sizing:border-box}
 body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--body); font-size:17px; line-height:1.6}
-.wrap{max-width:1080px; margin:0 auto; padding-inline:24px}
+.wrap{width:100%; margin:0; padding-inline:clamp(16px,4vw,72px)}
 a{color:var(--accent); text-underline-offset:3px}
 a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
 h1,h2,h3{font-family:var(--display); color:var(--ink); text-wrap:balance; margin:0; line-height:1.15}
@@ -59,7 +59,7 @@ section.block{padding-block:56px; border-top:1px solid var(--line); display:grid
 .sec-head p{color:var(--muted)}
 
 /* experience timeline */
-.org{display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr); gap:24px 40px}
+.org{display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr); gap:24px 56px}
 .org-meta{display:grid; gap:6px; align-content:start}
 .org-meta h3{font-size:22px}
 .org-meta .where{color:var(--muted); font-size:15px}
@@ -96,14 +96,14 @@ ul.plain li::marker{color:var(--accent)}
 .flow li:not(:last-child)::after{content:""; width:28px; height:2px; background:var(--accent); display:block}
 .caption{font-size:13.5px; color:var(--muted)}
 .evidence{font-size:15px; color:var(--muted); padding-top:14px; border-top:1px dashed var(--line)}
-.projects{display:grid; gap:24px}
+.projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,620px),1fr)); gap:24px; align-items:start}
 
 /* programs + competence */
-.grid2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px}
+.grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:20px}
 .card{border:1px solid var(--line); border-radius:8px; padding:24px; display:grid; gap:10px; align-content:start; background:var(--surface)}
 .card h3{font-size:20px}
 .card p{color:var(--muted); font-size:16px}
-.comp{display:grid; gap:0; border-top:1px solid var(--line)}
+.comp{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr)); column-gap:56px; border-top:1px solid var(--line)}
 .comp-row{display:grid; grid-template-columns:minmax(0,240px) minmax(0,1fr); gap:8px 32px; padding-block:16px; border-bottom:1px solid var(--line)}
 .comp-row b{font-family:var(--display); font-size:18px; color:var(--ink)}
 .comp-row p{color:var(--muted); font-size:16px}
