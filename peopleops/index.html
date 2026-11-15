@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>peopleOps Studio</title>
-<meta name="description" content="Tools dan sistem HR siap pakai dari praktisi HR 14 tahun. KPI Engine, RapiHR, dan tools sesuai cara kerja usahamu.">
+<meta name="description" content="Tools HR, ebook kerja, kelas Excel, dan jasa rapikan Excel dari praktisi HR 14 tahun. KPI Engine, RapiHR, Kalkulator HR Pro, Rekrutmen Studio, Bocoran HRD, dan lainnya.">
 <meta name="theme-color" content="#F4F4F1">
 <link rel="canonical" href="https://juna83.github.io/peopleops/">
 <link rel="icon" href="img/logo.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://juna83.github.io/peopleops/">
 <meta property="og:title" content="peopleOps Studio · Urusan HR jadi rapi, tanpa aplikasi mahal">
-<meta property="og:description" content="KPI Engine, RapiHR, dan tools sesuai cara kerja usahamu. Konsultasi awal gratis.">
+<meta property="og:description" content="Tools HR, ebook kerja, kelas Excel, dan jasa rapikan Excel. Mulai Rp15rb, sekali bayar. Konsultasi awal gratis.">
 <meta property="og:image" content="https://juna83.github.io/peopleops/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -132,6 +132,33 @@ p{text-wrap:pretty}
 .row.hot b::after{content:"Paling hemat";font-size:11px;font-weight:700;color:var(--teal);background:var(--soft);padding:3px 8px;border-radius:99px;margin-left:10px;vertical-align:3px;letter-spacing:.01em}
 .svc .more{margin-top:24px}
 
+
+
+/* katalog produk */
+.kf{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}.kf button{appearance:none;border:1px solid var(--line2);background:transparent;font:inherit;font-size:14px;font-weight:600;padding:8px 16px;border-radius:99px;cursor:pointer;color:var(--muted)}.kf button small{font-size:11px;margin-left:4px;opacity:.7}.kf button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.pc{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 0 0 1px rgba(23,33,31,.06),0 18px 36px -26px rgba(23,33,31,.35);display:flex;flex-direction:column;transition:opacity .25s,transform .25s}
+.pc.hide{display:none}
+.pc .im{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--soft)}.pc .im img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .4s}.pc:hover .im img{transform:scale(1.03)}
+.pc .tx{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}.pc b{font-size:17px;letter-spacing:-.02em}.pc span{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.5;flex:1}
+.pc .pr{display:flex;align-items:baseline;gap:8px;margin-top:12px;flex-wrap:wrap}.pc .pr em{font-style:normal;font-size:22px;font-weight:700;letter-spacing:-.03em}.pc .pr small{font-size:12.5px;color:var(--muted)}
+.pc .ac{display:flex;gap:14px;align-items:center;margin-top:12px;flex-wrap:wrap}.pc .ac .btn{height:40px;padding:0 16px;font-size:14px}.pc .ac .link{font-size:13.5px}
+@media (max-width:1200px){.pg{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){.pg{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.pg{grid-template-columns:1fr 1fr;gap:12px}.pc .tx{padding:12px}.pc b{font-size:15px}.pc span{font-size:12.5px}.pc .pr em{font-size:18px}.pc .ac .btn{height:36px;padding:0 12px;font-size:12.5px;width:100%;justify-content:center}.pc .ac .link{font-size:12.5px}.kf{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.kf button{white-space:nowrap}}
+/* jasa excel + portofolio */
+.xl{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,5vw,96px);align-items:start}
+.xl .col>.row:first-of-type{border-top:1px solid var(--ink)}
+.xl .fine{font-size:14px;color:var(--muted);margin-top:18px;line-height:1.55}
+.xl .act{display:flex;gap:16px;align-items:center;margin-top:24px;flex-wrap:wrap}
+.pf{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pf a{display:block;background:var(--card);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(23,33,31,.06),0 18px 36px -24px rgba(23,33,31,.35);transition:transform .25s}
+.pf a:hover{transform:translateY(-3px)}
+.pf .im{aspect-ratio:16/10;overflow:hidden;background:#fff;border-bottom:1px solid var(--line)}.pf .im img{width:100%;height:100%;object-fit:cover;object-position:left top}
+.pf .tx{padding:14px 16px 16px}.pf b{display:block;font-size:15.5px;letter-spacing:-.01em}.pf span{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.45}.pf em{font-style:normal;font-size:12px;font-weight:700;color:var(--teal);display:block;margin-top:8px}
+.pfh{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:12px}
+@media (max-width:960px){.xl{grid-template-columns:1fr}}
+@media (max-width:640px){.pf{grid-template-columns:1fr}}
 /* langkah */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
 .steps div{padding:32px 28px 0 0}
@@ -231,7 +258,7 @@ html.js .rv.in{opacity:1;transform:none}
   <div class="wrap">
     <a class="brand" href="#"><img src="img/logo.png" alt="">peopleOps Studio</a>
     <nav class="menu">
-      <a href="#produk">Produk</a><a href="#layanan">Layanan</a><a href="#cara">Cara kerja</a><a href="#faq">FAQ</a>
+      <a href="#produk">Produk</a><a href="#katalog">Katalog</a><a href="#excel">Jasa Excel</a><a href="#layanan">Layanan</a><a href="#cara">Cara kerja</a><a href="#faq">FAQ</a>
     </nav>
     <a class="btn dark" href="https://juna83.github.io/wa/" target="_blank" rel="noopener" aria-label="Konsultasi gratis via WhatsApp">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.2 1.4Z"/></svg>
@@ -348,6 +375,48 @@ html.js .rv.in{opacity:1;transform:none}
 </section>
 
 
+<section class="sec" id="katalog">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Produk lainnya, <span class="t">harga mulai Rp15rb.</span></h2>
+      <p>Untuk pemilik usaha, HR, pencari kerja, dan yang mau belajar. Semua sekali bayar lewat Lynk.</p>
+    </div>
+    <div class="kf rv" role="tablist"><button class="on" data-f="all">Semua <small>7</small></button><button data-f="usaha">Untuk usaha <small>3</small></button><button data-f="kerja">Cari & dunia kerja <small>3</small></button><button data-f="belajar">Belajar Excel <small>1</small></button></div>
+    <div class="pg rv"><div class="pc" data-k="usaha"><a class="im" href="https://lynk.id/juna83/183jjrzgw7or" target="_blank" rel="noopener"><img loading="lazy" src="img/p_khr.webp" alt="Kalkulator HR Pro" width="720" height="720"></a><div class="tx"><b>Kalkulator HR Pro</b><span>Gaji, lembur, BPJS, THR, prorata, dan slip WhatsApp untuk usaha sampai 10 karyawan.</span><div class="pr"><em>Rp25rb</em></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/183jjrzgw7or" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div><div class="pc" data-k="usaha"><a class="im" href="https://lynk.id/juna83/gwxry99glkdm" target="_blank" rel="noopener"><img loading="lazy" src="img/p_rekrut.webp" alt="Rekrutmen Studio" width="720" height="720"></a><div class="tx"><b>Rekrutmen Studio</b><span>Lowongan, saring CV otomatis, tes seleksi lewat link, sampai surat penawaran.</span><div class="pr"><em>Rp49rb</em></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/gwxry99glkdm" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div><div class="pc" data-k="usaha"><a class="im" href="https://lynk.id/juna83/6px6w19w7zy1" target="_blank" rel="noopener"><img loading="lazy" src="img/p_kreator.webp" alt="Studio Kreator" width="720" height="720"></a><div class="tx"><b>Studio Kreator</b><span>Dashboard konten: ide, caption 4 platform, jadwal, produk, dan bantu tulis AI.</span><div class="pr"><em>Rp99rb</em></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/6px6w19w7zy1" target="_blank" rel="noopener">Beli di Lynk</a><a class="link" href="https://lynk.id/juna83/1jey40v1yo8m" target="_blank" rel="noopener">Coba gratis 24 jam →</a></div></div></div><div class="pc" data-k="kerja"><a class="im" href="https://lynk.id/juna83/gxr5md89e9lx" target="_blank" rel="noopener"><img loading="lazy" src="img/p_bocoran.webp" alt="Bocoran HRD" width="720" height="720"></a><div class="tx"><b>Bocoran HRD</b><span>Ebook 85 halaman + Toolkit: lolos CV, interview, sampai masa percobaan.</span><div class="pr"><em>Rp15rb</em><small>sampai 30 Nov, lalu Rp29rb</small></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/gxr5md89e9lx" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div><div class="pc" data-k="kerja"><a class="im" href="https://lynk.id/juna83/5kpypqvk4dn7" target="_blank" rel="noopener"><img loading="lazy" src="img/p_bocoran2.webp" alt="Bocoran HRD 2" width="720" height="720"></a><div class="tx"><b>Bocoran HRD 2</b><span>Dari tanda tangan kontrak sampai kontrak habis. 61 halaman + lembar kerja.</span><div class="pr"><em>Rp15rb</em><small>sampai 30 Nov, lalu Rp29rb</small></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/5kpypqvk4dn7" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div><div class="pc" data-k="kerja"><a class="im" href="https://lynk.id/juna83/qop4o8dqxwme" target="_blank" rel="noopener"><img loading="lazy" src="img/p_ats.webp" alt="ATS CV Studio Pro" width="720" height="720"></a><div class="tx"><b>ATS CV Studio Pro</b><span>CV satu halaman ramah ATS, skor kesiapan otomatis, plus template Word.</span><div class="pr"><em>Rp15rb</em></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/qop4o8dqxwme" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div><div class="pc" data-k="belajar"><a class="im" href="https://lynk.id/juna83/8l2zyggeryr5" target="_blank" rel="noopener"><img loading="lazy" src="img/p_excel.webp" alt="Kelas Excel Jilid 1" width="720" height="720"></a><div class="tx"><b>Kelas Excel Jilid 1</b><span>6 modul interaktif, 31 kuis, 65 soal latihan yang menilai sendiri, dan Bank Rumus.</span><div class="pr"><em>Rp15rb</em></div><div class="ac"><a class="btn dark" href="https://lynk.id/juna83/8l2zyggeryr5" target="_blank" rel="noopener">Beli di Lynk</a></div></div></div></div>
+    <div class="more rv" style="margin-top:28px"><a class="link" href="https://lynk.id/juna83" target="_blank" rel="noopener">Lihat semua di Toko Lynk →</a></div>
+  </div>
+</section>
+
+<section class="sec" id="excel">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>File Excel berantakan? <span class="t">Kami rapikan.</span></h2>
+      <p>Rumus error, rekap manual, atau file tahun lalu yang perlu dipakai lagi untuk periode baru.</p>
+    </div>
+    <div class="xl">
+      <div class="col rv">
+        <div class="row"><b>Rapikan & perbaiki rumus</b><em><small>mulai</small>Rp150rb</em><span>Rumus error (#N/A, #REF!), format tidak seragam, data dobel. Per file sampai 5 sheet, umumnya selesai 1 hari.</span></div>
+        <div class="row"><b>Perbarui untuk periode baru</b><em><small>mulai</small>Rp250rb</em><span>Ganti tahun dan tanggal, hari libur, rumus rekap bulanan, supaya file siap dipakai lagi (misalnya untuk 2027).</span></div>
+        <div class="row"><b>Rekap & dashboard otomatis</b><em><small>mulai</small>Rp400rb</em><span>Rekap administrasi, absensi, atau penjualan yang terisi sendiri dari data mentah. 1–3 hari.</span></div>
+        <p class="fine">Harga pasti dikirim setelah file dilihat. Termasuk 2 kali revisi dan catatan singkat cara pakai. Data karyawan atau pelanggan boleh disamarkan dulu sebelum file dikirim.</p>
+        <div class="act">
+          <a class="btn dark" href="https://juna83.github.io/wa/" target="_blank" rel="noopener">Kirim file via WhatsApp</a>
+          <a class="link" href="https://lynk.id/juna83/8l2zyggeryr5" target="_blank" rel="noopener">Mau belajar sendiri? Kelas Excel →</a>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="pfh">Contoh hasil kerja (data fiktif)</div>
+        <div class="pf">
+          <a href="https://lynk.id/juna83/8l2zyggeryr5" target="_blank" rel="noopener"><div class="im"><img loading="lazy" src="img/excel_demo.webp" alt="File latihan Excel yang menilai jawaban otomatis" width="1400" height="816"></div><div class="tx"><b>File Excel yang menilai sendiri</b><span>COUNTIFS, SUMIFS, status benar/salah dan petunjuk muncul otomatis.</span><em>Kelas Excel Jilid 1 →</em></div></a>
+          <a href="https://lynk.id/juna83/8l2zyggeryr5" target="_blank" rel="noopener"><div class="im"><img loading="lazy" src="img/excel_bank.webp" alt="Bank rumus Excel" width="1400" height="875"></div><div class="tx"><b>Bank Rumus Excel</b><span>42 kartu rumus siap salin: lookup, logika, tanggal, teks, dan rekap.</span><em>Bonus Kelas Excel →</em></div></a>
+          <a href="https://lynk.id/juna83/183jjrzgw7or" target="_blank" rel="noopener"><div class="im"><img loading="lazy" src="img/02_cc8c63.webp" alt="Aplikasi gaji dan absensi" width="1400" height="875"></div><div class="tx"><b>Rekap gaji, lembur & BPJS</b><span>Hitungan payroll otomatis dan slip siap kirim, dari pengalaman HR 14+ tahun.</span><em>Kalkulator HR Pro & RapiHR →</em></div></a>
+          <a href="https://lynk.id/juna83/5empqq5p9l2v" target="_blank" rel="noopener"><div class="im"><img loading="lazy" src="img/06_effcb6.webp" alt="Penilaian kinerja KPI" width="1100" height="644"></div><div class="tx"><b>Rumus KPI & rekap tahunan</b><span>Bobot, target, dan nilai dihitung otomatis, lengkap dengan rekap 12 bulan.</span><em>KPI Engine →</em></div></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="layanan">
   <div class="wrap">
     <div class="head rv">
@@ -365,7 +434,8 @@ html.js .rv.in{opacity:1;transform:none}
         <h4>Layanan HR</h4>
         <div class="row"><b>Job description</b><em><small>mulai</small>Rp250rb</em><span>Per jabatan, 3–5 hari kerja.</span></div>
         <div class="row"><b>SOP operasional</b><em><small>mulai</small>Rp500rb</em><span>Per SOP plus flowchart, 5–7 hari kerja.</span></div>
-        <div class="row"><b>Setup KPI</b><em><small>mulai</small>Rp499rb</em><span>KPI untuk 5 jabatan disusun sampai siap dipakai di KPI Engine.</span></div>
+        <div class="row"><b>Setup KPI · Paket Dasar</b><em>Rp499rb</em><span>KPI untuk 5 jabatan disusun sampai siap dipakai di KPI Engine. <a class="link" href="https://lynk.id/juna83/x1oq63858w5v" target="_blank" rel="noopener">Pesan di Lynk</a></span></div>
+        <div class="row"><b>Setup KPI · Paket Lengkap</b><em>Rp999rb</em><span>Penyusunan KPI lengkap per jabatan, dipasang di KPI Engine. <a class="link" href="https://lynk.id/juna83/xgod290kjmg0" target="_blank" rel="noopener">Pesan di Lynk</a></span></div>
         <div class="row hot"><b>Paket HR Starter</b><em>Rp3,5jt</em><span>Struktur organisasi, 5 job desc, 3 SOP, template kontrak, form cuti. 2–3 minggu.</span></div>
       </div>
     </div>
@@ -391,8 +461,8 @@ html.js .rv.in{opacity:1;transform:none}
 <section class="sec" id="faq">
   <div class="wrap about">
     <div class="rv">
-      <p class="q">"14 tahun di HR, saya membangun sistem sendiri untuk pekerjaan <span class="nw" style="color:inherit">sehari-hari.</span> <span>Sekarang <span class="nw">tools-nya</span> saya bawa ke usahamu.</span>"</p>
-      <div class="who"><img src="img/logo.png" alt=""><div><b>Juna</b><small>Pendiri peopleOps Studio · praktisi HR</small></div></div>
+      <p class="q">"14 tahun di HR, kami membangun sistem sendiri untuk pekerjaan <span class="nw" style="color:inherit">sehari-hari.</span> <span>Sekarang <span class="nw">tools-nya</span> kami bawa ke usahamu.</span>"</p>
+      <div class="who"><img src="img/logo.png" alt=""><div><b>Pops</b><small>peopleOps Studio · dibangun praktisi HR 14+ tahun</small></div></div>
       <div class="soc">
         <a class="link" href="https://www.threads.net/@peopleopsstudio" target="_blank" rel="noopener">Threads →</a>
         <a class="link" href="https://www.instagram.com/peopleopsstudio" target="_blank" rel="noopener">Instagram →</a>
@@ -427,7 +497,7 @@ html.js .rv.in{opacity:1;transform:none}
 </section>
 <footer>
   <div class="wrap">
-    <span>© 2026 peopleOps Studio · atjunardi@gmail.com</span>
+    <span>© 2026 peopleOps Studio · WA 0816-309-339</span>
     <nav><a href="https://lynk.id/juna83" target="_blank" rel="noopener">Toko Lynk</a><a href="https://www.threads.net/@peopleopsstudio" target="_blank" rel="noopener">Threads</a><a href="https://www.instagram.com/peopleopsstudio" target="_blank" rel="noopener">Instagram</a><a href="https://juna83.github.io/wa/" target="_blank" rel="noopener">WhatsApp</a></nav>
   </div>
 </footer>
@@ -443,6 +513,10 @@ html.js .rv.in{opacity:1;transform:none}
   function chk(){rvs.forEach(function(el){if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in')})}
   addEventListener('scroll',chk,{passive:true});addEventListener('resize',chk);setTimeout(chk,300);
   setTimeout(function(){rvs.forEach(function(el){el.classList.add('in')})},2500);
+  document.querySelectorAll('.kf button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.kf button').forEach(function(x){x.classList.toggle('on',x===b)});
+    document.querySelectorAll('.pc').forEach(function(c){c.classList.toggle('hide',b.dataset.f!=='all'&&c.dataset.k!==b.dataset.f)});
+  })});
   var tabs=document.querySelectorAll('.tab');
   tabs.forEach(function(t){t.addEventListener('click',function(){
     tabs.forEach(function(x){x.setAttribute('aria-selected',x===t)});
