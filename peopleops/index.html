@@ -82,6 +82,77 @@ p{text-wrap:pretty}
 .hero .stage .shot{transform:rotateX(14deg) scale(.96);transform-origin:50% 0;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
 .hero .stage.flat .shot{transform:none}
 
+
+/* ilustrasi hidup KPI Engine */
+.lv{--n:#1E3A5F;text-align:left;font-size:15px;line-height:1.45}
+.lv .lv-top{display:flex;align-items:center;gap:20px;padding:16px 24px;border-bottom:1px solid var(--line);background:#FBFBF9}
+.lv-co{display:flex;align-items:center;gap:12px;min-width:0}.lv-lg{width:42px;height:42px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.lv-co b{display:block;font-size:17px;letter-spacing:-.01em;white-space:nowrap}.lv-co small{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.lv-tabs{display:flex;gap:6px;margin:0 auto;background:#EFEFEA;padding:5px;border-radius:14px}
+.lv-tabs button{position:relative;appearance:none;border:0;background:none;font:inherit;font-size:14px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;cursor:pointer;overflow:hidden;transition:background .3s,color .3s}
+.lv-tabs button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lv-tabs button.on{background:#fff;color:var(--teal);box-shadow:0 1px 3px rgba(23,33,31,.12)}
+.lv-tabs button i{position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:2px;background:var(--teal);transform:scaleX(0);transform-origin:left}
+.lv.run .lv-tabs button.on i{animation:lvP 6s linear forwards}.lv.hold .lv-tabs button.on i{animation-play-state:paused}
+@keyframes lvP{to{transform:scaleX(1)}}
+.lv-st{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);white-space:nowrap}.lv-st em{width:8px;height:8px;border-radius:50%;background:#22A06B;box-shadow:0 0 0 0 rgba(34,160,107,.5);animation:lvPu 2s infinite}
+@keyframes lvPu{70%{box-shadow:0 0 0 8px rgba(34,160,107,0)}100%{box-shadow:0 0 0 0 rgba(34,160,107,0)}}
+.lv-body{background:#F7F7F4;padding:24px;display:grid}
+.lv-v{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .45s,transform .45s,visibility 0s .45s}
+.lv-v.on{opacity:1;visibility:visible;transform:none;transition:opacity .45s,transform .45s}
+.lv-h{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}.lv-h h3{font-size:24px;letter-spacing:-.02em}.lv-h p{color:var(--muted);font-size:14px}
+.lv-pill{white-space:nowrap;background:var(--soft);color:var(--teal);font-weight:600;font-size:14px;padding:6px 14px;border-radius:99px}
+.lv-card{background:#fff;border-radius:16px;padding:18px 20px;box-shadow:0 0 0 1px rgba(23,33,31,.06)}
+.lv-card small{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.lv-cy{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;margin-bottom:16px}
+.lv-cy b{display:block;font-size:20px;letter-spacing:-.02em}.lv-cy span{color:var(--muted);font-size:13px}
+.lv-tr{position:relative;height:6px;background:#ECECE6;border-radius:6px}
+.lv-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;background:linear-gradient(90deg,#9ED9CF,var(--teal))}
+.lv-mk{position:absolute;top:-5px;width:2px;height:16px;background:#E2552D;border-radius:2px}
+.lv-dot{position:absolute;top:50%;left:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#fff;border:4px solid var(--teal);box-shadow:0 0 0 6px rgba(15,118,110,.15)}
+.lv-tll{position:relative;display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:var(--faint)}.lv-tll span{white-space:nowrap}.lv-tll .r{position:absolute;transform:translateX(-50%);color:#C2401C}
+.lv-cd{text-align:right}.lv-cd b span{font-size:inherit;color:inherit}.lv-cd>span span{font-size:inherit}.lv-cd b{font-size:18px}
+.lv-v.go .lv-fill{width:88%;transition:width 1.6s cubic-bezier(.2,.7,.2,1) .2s}.lv-v.go .lv-dot{left:88%;transition:left 1.6s cubic-bezier(.2,.7,.2,1) .2s}
+.lv-g2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.lv-ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.lv-ch em{font-style:normal;background:#FDE3E0;color:#B42318;font-weight:700;font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+.lv-todo{list-style:none}.lv-todo li{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--line);opacity:0;transform:translateX(-12px)}
+.lv-todo li:first-child{border-top:0}.lv-todo i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px}
+.lv-todo i.w{background:#FDE3E0;color:#B42318}.lv-todo i.a{background:#FFF0D1;color:#B76E00}
+.lv-todo div{flex:1;min-width:0}.lv-todo b{display:block;font-size:14px}.lv-todo span{font-size:12.5px;color:var(--muted)}
+.lv-todo button{appearance:none;font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line2);background:#fff;border-radius:9px;padding:6px 12px;color:var(--ink)}
+.lv-v.go .lv-todo li{opacity:1;transform:none;transition:opacity .4s,transform .4s}
+.lv-v.go .lv-todo li:nth-child(2){transition-delay:.15s}.lv-v.go .lv-todo li:nth-child(3){transition-delay:.3s}
+.lv-pc{font-size:18px;color:var(--teal)}
+.lv-bar{height:8px;background:#ECECE6;border-radius:8px;overflow:hidden;margin-bottom:10px}.lv-bar i{display:block;height:100%;width:0;background:var(--teal);border-radius:8px}
+.lv-v.go .lv-bar i{width:var(--w);transition:width 1.4s cubic-bezier(.2,.7,.2,1) .2s}
+.lv-chk{list-style:none}.lv-chk li{display:flex;align-items:center;gap:10px;font-size:14px;padding:6px 0;color:var(--muted)}
+.lv-chk i{width:20px;height:20px;border-radius:50%;border:2px solid var(--line2);flex:none;position:relative;transition:background .3s,border-color .3s}
+.lv-v.go .lv-chk li.ok{color:var(--ink)}.lv-v.go .lv-chk li.ok i{background:#22A06B;border-color:#22A06B}
+.lv-v.go .lv-chk li.ok i::after{content:"";position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lv-v.go .lv-chk li:nth-child(1) i{transition-delay:.3s}.lv-v.go .lv-chk li:nth-child(2) i{transition-delay:.55s}.lv-v.go .lv-chk li:nth-child(3) i{transition-delay:.8s}.lv-v.go .lv-chk li:nth-child(4) i{transition-delay:1.05s}
+.lv-tbl{padding:6px 20px}
+.lv-row{display:grid;grid-template-columns:1.4fr 1fr 1.6fr 90px;gap:20px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.lv-row.hd{border-top:0;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.lv-row>span:first-child{display:flex;align-items:center;gap:10px;font-weight:600}.lv-row>span:nth-child(2){color:var(--muted)}
+.av{font-style:normal;width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--teal);font-size:11px;font-weight:700;display:grid;place-items:center;flex:none}
+.lv-sb{height:8px;background:#ECECE6;border-radius:8px;overflow:hidden}.lv-sb i{display:block;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,#9ED9CF,var(--teal))}
+.lv-v.go .lv-sb i{width:var(--w);transition:width 1.3s cubic-bezier(.2,.7,.2,1) .15s}
+.lv-row>span:last-child{display:flex;align-items:center;gap:8px;justify-content:flex-end}.lv-row b{font-size:16px;font-variant-numeric:tabular-nums}
+.lv-row em{font-style:normal;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px}.lv-row em.A{background:#DDF3E4;color:#17803D}.lv-row em.B{background:#E1EDF9;color:#0B5CAD}.lv-row em.C{background:#FFF0D1;color:#B76E00}
+.lv-ch2{padding:24px 24px 14px}
+.lv-cols{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;height:240px;align-items:end}
+.lv-cols i{position:relative;height:0;border-radius:10px 10px 4px 4px;background:repeating-linear-gradient(135deg,#D6EDE8 0 6px,#E8F5F2 6px 12px)}
+.lv-cols i.on{background:var(--teal)}.lv-cols i.nx{background:none;border-bottom:2px dashed var(--line2)}
+.lv-cols b{font-style:normal;position:absolute;bottom:-24px;left:0;right:0;text-align:center;font-size:12px;font-weight:500;color:var(--faint)}
+.lv-cols s{font-style:normal;position:absolute;top:-34px;left:50%;transform:translateX(-50%);text-decoration:none;background:var(--ink);color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;opacity:0;transition:opacity .3s 1.3s}
+.lv-v.go .lv-cols i{height:var(--h);transition:height 1s cubic-bezier(.2,.7,.2,1)}
+.lv-v.go .lv-cols s{opacity:1}
+.lv-ch2{margin-bottom:10px}.lv-cols{margin-bottom:24px}
+.lv-v.go .lv-cols i:nth-child(1){transition-delay:0.00s}.lv-v.go .lv-cols i:nth-child(2){transition-delay:0.06s}.lv-v.go .lv-cols i:nth-child(3){transition-delay:0.12s}.lv-v.go .lv-cols i:nth-child(4){transition-delay:0.18s}.lv-v.go .lv-cols i:nth-child(5){transition-delay:0.24s}.lv-v.go .lv-cols i:nth-child(6){transition-delay:0.30s}.lv-v.go .lv-cols i:nth-child(7){transition-delay:0.36s}.lv-v.go .lv-cols i:nth-child(8){transition-delay:0.42s}.lv-v.go .lv-cols i:nth-child(9){transition-delay:0.48s}.lv-v.go .lv-cols i:nth-child(10){transition-delay:0.54s}.lv-v.go .lv-cols i:nth-child(11){transition-delay:0.60s}.lv-v.go .lv-cols i:nth-child(12){transition-delay:0.66s}
+@media (max-width:900px){.lv .lv-top{flex-wrap:wrap;gap:12px}.lv-st{display:none}.lv-tabs{margin:0;width:100%}.lv-tabs button{flex:1;justify-content:center}.lv-g2{grid-template-columns:1fr}.lv-cy{grid-template-columns:1fr;gap:14px}.lv-cd{text-align:left}}
+@media (max-width:600px){.lv-body{padding:14px}.lv .lv-top{padding:12px 14px}.lv-tabs button{padding:8px 6px;font-size:13px;gap:5px}.lv-tabs button svg{width:15px;height:15px}.lv-h h3{font-size:20px}.lv-row{grid-template-columns:1.3fr 1fr 64px;gap:10px;font-size:13px}.lv-row>span:nth-child(2){display:none}.lv-cols{gap:5px;height:180px}.lv-cols b{font-size:10px}.lv-todo button{display:none}.lv-g2>.lv-card+.lv-card,.lv-todo li:nth-child(3){display:none}.lv-tll{font-size:11px}.lv-tll .r{display:none}.lv-card{padding:14px}}
+@media (prefers-reduced-motion:reduce){.lv *{transition:none!important;animation:none!important}}
+
 /* bagian */
 .sec{padding:clamp(88px,12vh,128px) 0 0}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:44px}
@@ -286,9 +357,62 @@ html.js .rv.in{opacity:1;transform:none}
       <div><b>Gratis</b><span>konsultasi awal</span></div>
     </div>
     <div class="stage" id="stage">
-      <div class="shot crop">
-        <div class="bar"><i></i><i></i><i></i><span>KPI Engine · data fiktif</span></div>
-        <img src="img/01_96bdf8.webp" alt="Beranda KPI Engine dengan daftar tindak lanjut" width="1100" height="644">
+      <div class="shot lv" id="lv">
+        <div class="bar"><i></i><i></i><i></i><span>Ilustrasi tampilan KPI Engine · data fiktif</span></div>
+        <div class="lv-top">
+          <div class="lv-co"><span class="lv-lg">PM</span><div><b>PT Maju Bersama</b><small>Berlisensi · KPI Engine Pro</small></div></div>
+          <div class="lv-tabs" role="tablist">
+            <button class="on" data-v="0" role="tab"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Beranda<i></i></button>
+            <button data-v="1" role="tab"><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9zM6 6h2m8 0h2v15H6V6M9 13l2 2 4-4"/></svg>Penilaian<i></i></button>
+            <button data-v="2" role="tab"><svg viewBox="0 0 24 24"><path d="M5 20V10m5 10V5m5 15v-8m5 8V8"/></svg>Rekap<i></i></button>
+          </div>
+          <div class="lv-st"><em></em>Tersimpan otomatis</div>
+        </div>
+        <div class="lv-body">
+          <section class="lv-v on">
+            <div class="lv-h"><div><h3>Beranda</h3><p>Kamis, 22 Oktober 2026 · PT Maju Bersama</p></div></div>
+            <div class="lv-card lv-cy">
+              <div><small>Siklus berjalan</small><b>Oktober 2026</b><span>26 Sep – 25 Okt 2026</span></div>
+              <div class="lv-tl"><div class="lv-tr"><i class="lv-fill"></i><i class="lv-mk" style="left:80%"></i><i class="lv-dot"></i></div>
+                <div class="lv-tll"><span>Mulai</span><span class="r" style="left:80%">Batas isian</span><span>Cut-off</span></div></div>
+              <div class="lv-cd"><b><span data-n="3">0</span> hari lagi</b><span>ke cut-off · <span data-n="2">0</span>/5 terkunci</span></div>
+            </div>
+            <div class="lv-g2">
+              <div class="lv-card">
+                <div class="lv-ch"><small>Perlu ditindaklanjuti</small><em>3</em></div>
+                <ul class="lv-todo">
+                  <li><i class="w">!</i><div><b>1 file isian karyawan lewat batas</b><span>Tagih: Budi Santoso</span></div><button>Lihat</button></li>
+                  <li><i class="w">!</i><div><b>1 kontrak berakhir, karyawan masih aktif</b><span>Perpanjang, angkat, atau nonaktifkan</span></div><button>Karyawan</button></li>
+                  <li><i class="a">↑</i><div><b>Absensi Oktober belum diunggah</b><span>Dipakai untuk KPI kehadiran</span></div><button>Unggah</button></li>
+                </ul>
+              </div>
+              <div class="lv-card">
+                <div class="lv-ch"><small>Kesiapan sistem</small><b class="lv-pc"><span data-n="80">0</span>%</b></div>
+                <div class="lv-bar"><i style="--w:80%"></i></div>
+                <ul class="lv-chk">
+                  <li class="ok"><i></i>Lisensi aktif</li><li class="ok"><i></i>Profil & logo perusahaan</li><li class="ok"><i></i>KPI 14 jabatan</li><li class="ok"><i></i>PIN admin</li><li><i></i>Backup pertama</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="lv-v">
+            <div class="lv-h"><div><h3>Penilaian Oktober</h3><p>Nilai dihitung otomatis dari bobot dan target</p></div><span class="lv-pill">5 karyawan</span></div>
+            <div class="lv-card lv-tbl">
+              <div class="lv-row hd"><span>Karyawan</span><span>Jabatan</span><span>Capaian</span><span>Nilai</span></div>
+              <div class="lv-row"><span><i class="av">AS</i>Ayu Saraswati</span><span>Admin Gudang</span><span class="lv-sb"><i style="--w:96%"></i></span><span><b data-n="96">0</b><em class="A">A</em></span></div>
+              <div class="lv-row"><span><i class="av">BS</i>Budi Santoso</span><span>Sales</span><span class="lv-sb"><i style="--w:88%"></i></span><span><b data-n="88">0</b><em class="A">A</em></span></div>
+              <div class="lv-row"><span><i class="av">CP</i>Citra Purnama</span><span>Kasir</span><span class="lv-sb"><i style="--w:79%"></i></span><span><b data-n="79">0</b><em class="B">B</em></span></div>
+              <div class="lv-row"><span><i class="av">DH</i>Dedi Hermawan</span><span>Driver</span><span class="lv-sb"><i style="--w:72%"></i></span><span><b data-n="72">0</b><em class="B">B</em></span></div>
+              <div class="lv-row"><span><i class="av">EM</i>Eka Maharani</span><span>Staf Keuangan</span><span class="lv-sb"><i style="--w:61%"></i></span><span><b data-n="61">0</b><em class="C">C</em></span></div>
+            </div>
+          </section>
+          <section class="lv-v">
+            <div class="lv-h"><div><h3>Rekap tahunan 2026</h3><p>Rata-rata nilai KPI per bulan</p></div><span class="lv-pill">Rata-rata <b data-n="74">0</b></span></div>
+            <div class="lv-card lv-ch2"><div class="lv-cols">
+              <i style="--h:62%"><b>Jan</b></i><i style="--h:68%"><b>Feb</b></i><i style="--h:66%"><b>Mar</b></i><i style="--h:71%"><b>Apr</b></i><i style="--h:74%"><b>Mei</b></i><i style="--h:73%"><b>Jun</b></i><i style="--h:78%"><b>Jul</b></i><i style="--h:80%"><b>Agu</b></i><i style="--h:83%"><b>Sep</b></i><i class="on" style="--h:86%"><s>86</s><b>Okt</b></i><i class="nx" style="--h:0%"><b>Nov</b></i><i class="nx" style="--h:0%"><b>Des</b></i>
+            </div></div>
+          </section>
+        </div>
       </div>
     </div>
   </div>
@@ -556,6 +680,23 @@ html.js .rv.in{opacity:1;transform:none}
     document.querySelectorAll('.panel').forEach(function(p){p.classList.toggle('on',p.id===t.dataset.p)});
     t.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
   })});
+})();
+</script>
+
+<script>
+(function(){var lv=document.getElementById('lv');if(!lv)return;
+var V=lv.querySelectorAll('.lv-v'),B=lv.querySelectorAll('.lv-tabs button'),cur=0,t=null,seen=false,
+rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function count(v){v.querySelectorAll('[data-n]').forEach(function(e){var n=+e.dataset.n;if(rm){e.textContent=n;return}var t0=null;
+ function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1100,1);e.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(st)}requestAnimationFrame(st)})}
+function show(i){cur=i;V.forEach(function(v,k){v.classList.toggle('on',k===i);v.classList.remove('go')});
+ B.forEach(function(b,k){b.classList.toggle('on',k===i);var x=b.querySelector('i');x.style.animation='none';x.offsetWidth;x.style.animation=''});
+ requestAnimationFrame(function(){requestAnimationFrame(function(){V[i].classList.add('go');count(V[i])})});
+ clearTimeout(t);if(!rm)t=setTimeout(next,6000)}
+function next(){if(lv.classList.contains('hold')){t=setTimeout(next,800);return}show((cur+1)%V.length)}
+B.forEach(function(b,k){b.addEventListener('click',function(){show(k)})});
+lv.addEventListener('mouseenter',function(){lv.classList.add('hold')});lv.addEventListener('mouseleave',function(){lv.classList.remove('hold')});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!seen){seen=true;lv.classList.add('run');show(0)}})},{threshold:.25});io.observe(lv);
 })();
 </script>
 </body>
