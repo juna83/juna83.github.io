@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>peopleOps Studio HRIS · HRIS milik perusahaan Anda sendiri</title>
+<meta name="description" content="peopleOps Studio HRIS dipasang di server perusahaan Anda: tanpa biaya bulanan, tanpa paket, semua modul terbuka, modul basic bisa dicoba paling lambat 7 hari, pemeliharaan gratis 24 bulan, satu PIC tetap.">
+<meta property="og:title" content="peopleOps Studio HRIS · HRIS milik perusahaan Anda sendiri">
+<meta property="og:description" content="Tanpa biaya bulanan, tanpa paket, semua modul terbuka. Satu PIC sampai kontrak selesai.">
+<meta property="og:image" content="https://juna83.github.io/peopleops/hris/img/eksekutif.webp">
+<meta name="theme-color" content="#F4EFE9">
+<link rel="icon" href="img/pops-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{--side:#F4EFE9;--bg:#FBF8F6;--card:#FFFFFF;--line:#EEE7E1;--line2:#F3EEEA;--ink:#1B1B1F;--ink2:#3A3A40;--mut:#6B6B73;--faint:#8F8F97;--red:#ED1C24;--red-d:#C0161D;--red50:#FDECEB;--red100:#F9E5E3;--ok:#16803C;--ok50:#E3F4E8;--amb:#9A5800;--amb50:#FFF1DA;
+ --f:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--side);color:var(--ink);font-family:var(--f);font-size:15.5px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block;height:auto}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+:focus-visible{outline:2.5px solid var(--red);outline-offset:2px;border-radius:8px}
+h1,h2,h3{margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+.ic{width:20px;height:20px;flex:none}
+.ck{width:18px;height:18px;color:var(--red);flex:none;margin-top:2px}
+
+#intro{position:fixed;inset:0;z-index:100;background:var(--side);display:grid;place-items:center;transition:transform .7s cubic-bezier(.77,0,.18,1)}
+#intro.out{transform:translateY(-100%)}
+#intro.gone{display:none}
+.in-box{display:flex;flex-direction:column;align-items:center;gap:18px;width:min(440px,88vw)}
+.in-logo{display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(12px) scale(.96);animation:inUp .6s .1s cubic-bezier(.2,.8,.2,1) forwards}
+.in-logo img{height:40px;width:auto}
+.in-logo b{white-space:nowrap;font-size:clamp(22px,6vw,32px);font-weight:700;letter-spacing:-.03em}
+.in-logo span{font-size:14px;font-weight:600;color:var(--red-d);background:var(--red100);border-radius:9px;padding:3px 9px}
+.in-line{font-size:14px;color:var(--mut);height:20px;opacity:0;animation:inUp .5s .45s forwards}
+.in-bar{width:100%;height:4px;border-radius:99px;background:#E8E0D8;overflow:hidden;opacity:0;animation:inUp .4s .5s forwards}
+.in-bar i{display:block;height:100%;width:0;background:var(--red);border-radius:99px;animation:bar 1.5s .6s cubic-bezier(.6,.1,.2,1) forwards}
+.in-skip{position:absolute;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));font-size:13px;color:var(--mut);padding:8px 12px;border-radius:8px}
+@keyframes inUp{to{opacity:1;transform:none}}
+@keyframes bar{to{width:100%}}
+
+.shell{display:block;min-height:100vh}
+.side{display:none}
+.main{background:var(--bg);min-width:0}
+.top{position:sticky;top:0;z-index:20;background:rgba(251,248,246,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topin{display:flex;align-items:center;gap:10px;height:62px;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+.mlogo,.slogo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:16px;white-space:nowrap;letter-spacing:-.02em}
+.mlogo img{height:19px;width:auto}
+.mlogo span,.slogo span{font-size:11.5px;font-weight:600;color:var(--red-d);background:var(--red100);border-radius:7px;padding:2px 7px;letter-spacing:0}
+.crumb{display:none;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 14px 6px 7px;font-weight:600;font-size:15px}
+.crumb i{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;color:var(--red)}
+.sp{flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:11px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}
+.btn.r{background:var(--red);color:#fff}
+.btn.r:hover{background:var(--red-d)}
+.btn.w{background:var(--card);border:1px solid var(--line)}
+.btn.w:hover{border-color:#DDD3CB}
+.top .btn{min-height:40px;padding:0 14px;font-size:14px}
+.mnav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:0 max(16px,env(safe-area-inset-left,0px)) 10px}
+.mnav::-webkit-scrollbar{display:none}
+.mnav a{flex:none;text-decoration:none;font-size:13.5px;font-weight:500;color:var(--mut);padding:7px 12px;border-radius:99px;background:var(--card);border:1px solid var(--line)}
+.mnav a.on{color:var(--red-d);background:var(--red50);border-color:#F6D3D0}
+.page{padding:22px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.sec{padding-top:56px}
+.cap{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--red-d);margin-bottom:10px}
+.cap i{width:6px;height:6px;border-radius:50%;background:var(--red)}
+.sec h2{font-size:clamp(26px,3.6vw,38px);line-height:1.12;font-weight:700;max-width:22ch}
+.sub{color:var(--mut);margin-top:10px;max-width:60ch;font-size:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+
+.hi{font-size:16px;color:var(--ink2)}
+.hero h1{font-size:clamp(36px,6.2vw,68px);line-height:1.02;font-weight:700;letter-spacing:-.035em;margin:10px 0 16px;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--red)}
+.lead{font-size:clamp(16px,1.8vw,19px);color:var(--mut);max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:30px;overflow:hidden}
+.st{padding:16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0;margin:0 -1px -1px 0}
+.st .h{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink2);font-weight:500;line-height:1.3}
+.st .h i{width:30px;height:30px;border-radius:9px;border:1px solid var(--line);display:grid;place-items:center;color:var(--red);flex:none}
+.st .h i svg{width:16px;height:16px}
+.st b{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.frame{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 60px -36px rgba(60,30,20,.35),0 10px 24px -18px rgba(60,30,20,.2);background:var(--card)}
+.fbar{display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border-bottom:1px solid var(--line2);background:#FDFBFA}
+.fbar .d{display:flex;gap:6px}.fbar .d i{width:9px;height:9px;border-radius:50%;background:#E9E1DA}
+.fbar .u{flex:1;max-width:320px;margin:0 auto;height:22px;border-radius:7px;background:var(--side);font-size:11.5px;color:var(--mut);display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;overflow:hidden}
+.fbar .u b{color:var(--ink);font-weight:500}
+.shot{position:relative;margin-top:22px}
+.pin{position:absolute;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:0 16px 30px -18px rgba(60,30,20,.35);display:none;align-items:center;gap:10px;font-size:13px}
+.pin i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:none}
+.pin b{display:block;font-size:14px}
+.pin small{color:var(--mut);font-size:12px}
+
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-top:26px}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;display:flex;align-items:center;gap:8px;padding:12px 14px;font-size:15px;font-weight:500;color:var(--ink2);border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button svg{width:17px;height:17px;color:var(--mut)}
+.tabs button[aria-selected="true"]{color:var(--red);border-bottom-color:var(--red)}
+.tabs button[aria-selected="true"] svg{color:var(--red)}
+.pane{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:18px}
+.pane[hidden]{display:none}
+.pane .txt h3{font-size:22px;font-weight:700;line-height:1.2}
+.pane .txt p{color:var(--mut);margin-top:8px}
+.ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:9px}
+.ul li{display:flex;gap:10px;font-size:15px;color:var(--ink2)}
+
+.open{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:24px;padding:22px}
+.tiers{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tier{font-size:15px;font-weight:600;padding:8px 14px;border-radius:10px;background:var(--side);color:var(--faint);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--red)}
+.all{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;padding:8px 14px;border-radius:10px;background:var(--red);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{font-size:13px;font-weight:500;padding:5px 10px;border-radius:8px;background:var(--bg);border:1px solid var(--line)}
+
+.kv{margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr);gap:0 32px;padding:6px 20px}
+.kvr{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;padding:14px 0;border-bottom:1px solid var(--line2);align-items:baseline}
+.kvr span{color:var(--mut);font-size:14.5px}
+.kvr b{font-weight:600;font-size:15.5px}
+.kvr b small{display:block;font-weight:400;color:var(--mut);font-size:13.5px;margin-top:2px}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:24px}
+.fc{padding:18px;display:flex;flex-direction:column;gap:10px}
+.fc .t{display:flex;align-items:center;gap:12px}
+.fc .t i{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;color:var(--red);flex:none}
+.fc h3{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+.fc p{color:var(--mut);font-size:14.5px}
+.tg{display:inline-block;font-size:12px;font-weight:600;border-radius:7px;padding:2px 8px;margin-top:auto;align-self:flex-start}
+.tg.ok{background:var(--ok50);color:var(--ok)}.tg.pl{background:var(--amb50);color:var(--amb)}
+
+.mods{margin-top:24px;padding:8px;display:grid;grid-template-columns:minmax(0,1fr);gap:2px}
+.mo{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:11px}
+.mo:hover{background:var(--bg)}
+.mo>svg{width:20px;height:20px;color:var(--ink2);flex:none}
+.mo b{font-weight:500;font-size:15.5px;flex:1;min-width:0}
+.mo b small{display:block;font-weight:400;font-size:12.5px;color:var(--mut)}
+.mo em{font-style:normal;font-size:12px;font-weight:600;border-radius:7px;padding:3px 8px;white-space:nowrap}
+.mo em.ok{background:var(--ok50);color:var(--ok)}
+.mo em.bg{background:var(--side);color:var(--mut)}
+.mh{grid-column:1/-1;font-size:12.5px;color:var(--mut);padding:12px 12px 4px}
+
+.time{margin-top:24px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.tli{position:relative;padding:0 0 22px 36px}
+.tli::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;background:var(--card);border:2px solid var(--line);box-sizing:border-box}
+.tli.on::before{border-color:var(--red);background:var(--red);box-shadow:inset 0 0 0 4px #fff}
+.tli:not(:last-child)::after{content:"";position:absolute;left:10px;top:28px;bottom:2px;width:2px;background:var(--line)}
+.tli small{font-size:12.5px;font-weight:600;color:var(--red-d)}
+.tli b{display:block;font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:1px}
+.tli span{color:var(--mut);font-size:14.5px}
+.basis{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;align-self:start}
+.basis b{font-size:15px}
+.basis p{color:var(--mut);font-size:14.5px;margin-top:6px}
+.bars{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.br{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;align-items:center;font-size:13.5px}
+.br i{height:8px;border-radius:99px;background:var(--line);overflow:hidden}.br i b{display:block;height:100%;background:var(--red);border-radius:99px}
+
+.cmpw{margin-top:24px;overflow-x:auto}
+.cmp{width:100%;min-width:600px;border-collapse:collapse;font-size:15px}
+.cmp th{text-align:left;font-size:13px;font-weight:600;color:var(--mut);padding:14px 16px;border-bottom:1px solid var(--line)}
+.cmp th.us{color:var(--red-d)}
+.cmp td{padding:14px 16px;border-bottom:1px solid var(--line2);vertical-align:top}
+.cmp tr:last-child td{border-bottom:0}
+.cmp td:first-child{color:var(--mut);width:18%}
+.cmp td.us{background:var(--red50);font-weight:600}
+
+.faq{margin-top:24px;padding:4px 20px}
+.faq details{border-bottom:1px solid var(--line2)}
+.faq details:last-child{border-bottom:0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 0;font-weight:600;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary svg{width:18px;height:18px;color:var(--mut);flex:none;transition:transform .2s}
+.faq details[open] summary svg{transform:rotate(180deg)}
+.faq p{color:var(--mut);padding:0 0 18px;max-width:70ch}
+
+.end{margin-top:56px;padding:30px 22px;display:grid;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:20px;position:relative;overflow:hidden}
+.end::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--red50)}
+.end>*{position:relative}
+.end h2{font-size:clamp(26px,3.6vw,38px);line-height:1.1;font-weight:700;max-width:18ch}
+.end p{color:var(--mut);margin-top:8px;max-width:48ch}
+.ct{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.ct div{display:flex;gap:12px;flex-wrap:wrap}
+.ct small{width:76px;color:var(--mut);font-size:13.5px}
+.ct b{font-weight:600;user-select:all}
+.foot{padding:26px 0 8px;font-size:13px;color:var(--mut);display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+
+@media (min-width:640px){
+ .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .kv{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .mods{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pin{display:flex}
+ .pin.p1{left:12px;bottom:12px}
+ .pin.p2{right:12px;top:48px}
+}
+@media (min-width:1024px){
+ .shell{display:grid;grid-template-columns:268px minmax(0,1fr)}
+ .side{display:flex;flex-direction:column;position:sticky;top:0;height:100vh;padding:20px 14px 14px;gap:2px;overflow:auto}
+ .slogo{font-size:21px;gap:10px;padding:4px 8px 18px}
+ .slogo img{height:22px;width:auto}
+ .sh{font-size:12.5px;color:var(--mut);padding:14px 12px 6px}
+ .side a.it{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink)}
+ .side a.it svg{width:20px;height:20px;color:var(--ink2);flex:none}
+ .side a.it em{margin-left:auto;white-space:nowrap;font-style:normal;font-size:11.5px;font-weight:600;color:var(--mut);background:#EAE3DC;border-radius:7px;padding:2px 7px}
+ .side a.it:hover{background:rgba(255,255,255,.6)}
+ .side a.it.on{background:var(--card);color:var(--red);box-shadow:0 1px 2px rgba(60,30,20,.08)}
+ .side a.it.on svg{color:var(--red)}
+ .side .grow{flex:1}
+ .sw{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-decoration:none}
+ .sw i{width:40px;height:40px;border-radius:11px;background:var(--red);color:#fff;display:grid;place-items:center;flex:none}
+ .sw small{display:block;font-size:12px;color:var(--mut)}
+ .sw b{font-size:15px}
+ .main{margin:10px 10px 10px 0;border-radius:18px;border:1px solid var(--line);min-height:calc(100vh - 20px)}
+ .top{border-radius:18px 18px 0 0;top:10px}
+ .mlogo,.mnav{display:none}
+ .crumb{display:flex}
+ .topin{padding:0 28px}
+ .page{padding:28px 36px 36px}
+ .stats{grid-template-columns:repeat(6,minmax(0,1fr))}
+ .pane{grid-template-columns:minmax(0,1fr) 300px;align-items:start}
+ .pane .txt{position:sticky;top:110px}
+ .open{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;padding:30px}
+ .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .time{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);padding:30px}
+ .end{grid-template-columns:1.4fr 1fr;align-items:end;padding:44px}
+ .pin.p1{left:-14px;bottom:28px}
+ .pin.p2{right:-14px;top:80px}
+}
+
+/* auto-hide sidebar (desktop) */
+@media (min-width:1024px){
+ .shell{grid-template-columns:84px minmax(0,1fr)}
+ .side{position:fixed;left:0;top:0;bottom:0;z-index:40;width:84px;height:100vh;background:var(--side);overflow-x:hidden;transition:width .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s}
+ .side:hover,.side:focus-within{width:268px;box-shadow:18px 0 40px -24px rgba(60,30,20,.35)}
+ .side .lb,.side a.it em,.side .sh{opacity:0;transition:opacity .18s;white-space:nowrap}
+ .side:hover .lb,.side:hover a.it em,.side:hover .sh,.side:focus-within .lb,.side:focus-within a.it em,.side:focus-within .sh{opacity:1;transition-delay:.08s}
+ .side a.it,.slogo{white-space:nowrap}
+ .slogo{padding:6px 10px 18px;gap:10px}
+ .slogo img{height:19px}
+ .slogo .lb{display:flex;align-items:center;gap:8px;background:none;padding:0;border-radius:0;font-size:16.5px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+ .slogo .lb span{font-size:11.5px}
+ .sw{min-width:236px}
+ .main{grid-column:2;margin-left:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ck" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol></svg>
+
+<div id="intro" aria-hidden="true">
+ <div class="in-box">
+  <div class="in-logo"><img src="img/pops-mark.png" alt=""><b>peopleOps Studio</b><span>HRIS</span></div>
+  <div class="in-line" id="inLine">Menyiapkan dashboard…</div>
+  <div class="in-bar"><i></i></div>
+ </div>
+ <button class="in-skip" id="inSkip">Lewati</button>
+</div>
+
+<div class="shell">
+ <aside class="side" aria-label="Navigasi (arahkan kursor untuk membuka)">
+  <a class="slogo" href="#beranda"><img src="img/pops-mark.png" alt=""><span class="lb">peopleOps Studio <span>HRIS</span></span></a>
+  <div class="sh">Produk</div>
+  <a class="it on" href="#beranda"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 1 1 16 0"/><path d="M12 13l4-3"/><path d="M4 17h16"/></svg><span class="lb">Beranda</span></a>
+  <a class="it" href="#tur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span class="lb">Tur produk</span></a>
+  <a class="it" href="#fitur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg><span class="lb">Fitur unggulan</span></a>
+  <a class="it" href="#modul"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg><span class="lb">Modul</span></a>
+  <div class="sh">Layanan</div>
+  <a class="it" href="#tanpa-paket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg><span class="lb">Tanpa paket</span><em>Semua</em></a>
+  <a class="it" href="#waktu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/></svg><span class="lb">Waktu</span><em>≤7 hari</em></a>
+  <a class="it" href="#lisensi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span class="lb">Lisensi & layanan</span></a>
+  <a class="it" href="#banding"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8h14M3 14l2-6 2 6a2 2 0 0 1-4 0zM17 14l2-6 2 6a2 2 0 0 1-4 0z"/></svg><span class="lb">Perbandingan</span></a>
+  <a class="it" href="#faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg><span class="lb">Tanya jawab</span></a>
+  <div class="grow"></div>
+  <a class="sw" href="https://wa.me/62816309339?text=Halo%20peopleOps%20Studio%2C%20saya%20ingin%20jadwalkan%20demo%20HRIS." target="_blank" rel="noopener"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span class="lb"><small>Beralih ke</small><b>Jadwalkan demo</b></span></a>
+ </aside>
+
+ <div class="main">
+  <header class="top">
+   <div class="topin">
+    <a class="mlogo" href="#beranda"><img src="img/pops-mark.png" alt="">peopleOps Studio <span>HRIS</span></a>
+    <div class="crumb"><i><svg style="width:16px;height:16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/></svg></i><span id="crumb">Beranda</span></div>
+    <span class="sp"></span>
+    <a class="btn r" href="https://wa.me/62816309339?text=Halo%20peopleOps%20Studio%2C%20saya%20ingin%20jadwalkan%20demo%20HRIS." target="_blank" rel="noopener">Minta demo</a>
+   </div>
+   <nav class="mnav" aria-label="Bagian halaman">
+    <a href="#beranda" class="on">Beranda</a><a href="#tur">Tur produk</a><a href="#tanpa-paket">Tanpa paket</a><a href="#fitur">Fitur</a><a href="#modul">Modul</a><a href="#waktu">Waktu</a><a href="#lisensi">Lisensi</a><a href="#banding">Banding</a><a href="#faq">Tanya jawab</a>
+   </nav>
+  </header>
+
+  <div class="page">
+   <section id="beranda" class="hero" data-t="Beranda">
+    <p class="hi">Halo, tim HR <span aria-hidden="true">👋</span></p>
+    <h1>HRIS milik perusahaan <em>Anda sendiri.</em></h1>
+    <p class="lead">Dipasang di server Anda. Tanpa biaya bulanan, tanpa paket, semua modul terbuka. Satu PIC menemani sampai kontrak selesai.</p>
+    <div class="cta">
+     <a class="btn r" href="https://wa.me/62816309339?text=Halo%20peopleOps%20Studio%2C%20saya%20ingin%20jadwalkan%20demo%20HRIS." target="_blank" rel="noopener">Jadwalkan demo<svg style="width:17px;height:17px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+     <a class="btn w" href="#tur">Lihat tur produk</a>
+    </div>
+
+    <div class="card stats">
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></i>Biaya bulanan</div><b class="num">Rp0</b></div>
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg></i>Modul terbuka</div><b>Semua</b></div>
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/></svg></i>Modul basic dicoba</div><b class="num">≤7 hari</b></div>
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i>Selesai paling lama</div><b class="num">3 bulan</b></div>
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></i>Pemeliharaan gratis</div><b class="num">24 bulan</b></div>
+     <div class="st"><div class="h"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></i>PIC tetap</div><b class="num">1 orang</b></div>
+    </div>
+
+    <div class="shot">
+     <div class="pin p1"><i style="background:var(--red50);color:var(--red)"><svg style="width:17px;height:17px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.5-2"/></svg></i><div><b>Tanpa paket</b><small>Semua modul terbuka</small></div></div>
+     <div class="pin p2"><i style="background:var(--ok50);color:var(--ok)"><svg style="width:17px;height:17px"><use href="#ck"/></svg></i><div><b>Data di server Anda</b><small>Domain perusahaan sendiri</small></div></div>
+     <div class="frame">
+      <div class="fbar"><div class="d"><i></i><i></i><i></i></div><div class="u"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16803C" stroke-width="2.6" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>hr.perusahaananda.co.id</b></div></div>
+      <img src="img/eksekutif.webp" width="1440" height="870" alt="Dashboard Eksekutif: karyawan aktif, turnover, tren 12 bulan, komposisi per PT. Data contoh fiktif.">
+     </div>
+    </div>
+   </section>
+
+   <section id="tur" class="sec" data-t="Tur produk">
+    <div class="cap"><i></i>Tur produk</div>
+    <h2>Lihat langsung isi sistemnya.</h2>
+    <p class="sub">Tangkapan layar asli dari mode demo. Semua nama dan angka fiktif.</p>
+    <div class="tabs" role="tablist" aria-label="Layar produk">
+     <button role="tab" aria-selected="true" aria-controls="p0" id="t0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="6" rx="1.5"/></svg>Dashboard HR</button>
+     <button role="tab" aria-selected="false" aria-controls="p1" id="t1" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 15c1.6.7 2.6 2.4 3 5"/></svg>Data karyawan</button>
+     <button role="tab" aria-selected="false" aria-controls="p2" id="t2" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M7.5 17c1-2 2.6-3 4.5-3s3.5 1 4.5 3"/></svg>Profil karyawan</button>
+     <button role="tab" aria-selected="false" aria-controls="p3" id="t3" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg>Persetujuan</button>
+     <button role="tab" aria-selected="false" aria-controls="p4" id="t4" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M12 7v5M6 17v-2h12v2M12 12v3"/></svg>Peta atasan</button>
+     <button role="tab" aria-selected="false" aria-controls="p5" id="t5" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Rekap progres</button>
+    </div>
+
+    <div class="pane" role="tabpanel" id="p0" aria-labelledby="t0">
+     <div class="frame"><img src="img/dash_hr.webp" width="1440" height="870" loading="lazy" alt="Dashboard HR: karyawan aktif, masuk dan keluar, kontrak habis, per departemen, status kepegawaian. Data fiktif."></div>
+     <div class="txt"><h3>Dashboard HR harian</h3><p>Angka yang perlu ditindaklanjuti hari ini, tanpa membuka laporan.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Kontrak habis ≤30 hari dan karyawan tanpa atasan</li><li><svg class="ck"><use href="#ck"/></svg>Komposisi per departemen dan status kepegawaian</li><li><svg class="ck"><use href="#ck"/></svg>Dashboard eksekutif terpisah untuk direksi</li></ul></div>
+    </div>
+    <div class="pane" role="tabpanel" id="p1" aria-labelledby="t1" hidden>
+     <div class="frame"><img src="img/karyawan.webp" width="1440" height="870" loading="lazy" alt="Daftar karyawan dengan PIN, jabatan, lokasi kerja, status kepegawaian, masa kerja dan aksi. Data fiktif."></div>
+     <div class="txt"><h3>Data karyawan</h3><p>Satu daftar untuk karyawan tetap, kontrak, dan masa percobaan.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Cari, saring, urutkan, unduh PDF dan Excel</li><li><svg class="ck"><use href="#ck"/></svg>Impor dari Excel atau sistem lama</li><li><svg class="ck"><use href="#ck"/></svg>WhatsApp dan email langsung dari baris</li></ul></div>
+    </div>
+    <div class="pane" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+     <div class="frame"><img src="img/detail.webp" width="1440" height="870" loading="lazy" alt="Profil karyawan: perlu tindakan, kelengkapan data, sekilas kepegawaian, verifikasi biodata. Data fiktif."></div>
+     <div class="txt"><h3>Profil karyawan 360°</h3><p>Semua tentang satu orang di satu layar, termasuk apa yang perlu dikerjakan HR.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Biodata diisi karyawan, diverifikasi HR</li><li><svg class="ck"><use href="#ck"/></svg>Riwayat karir dan kontrak per periode</li><li><svg class="ck"><use href="#ck"/></svg>Biodata dan CV jadi PDF</li></ul></div>
+    </div>
+    <div class="pane" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+     <div class="frame"><img src="img/persetujuan.webp" width="1440" height="870" loading="lazy" alt="Halaman persetujuan: menunggu saya, pengajuan saya, semua pengajuan. Data fiktif."></div>
+     <div class="txt"><h3>Persetujuan berjenjang</h3><p>Promosi, mutasi, kontrak, masa percobaan, SP, dan resign: diusulkan atasan, diputuskan direktur, surat terbit ke akun karyawan.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Surat PDF bernomor otomatis dengan QR</li><li><svg class="ck"><use href="#ck"/></svg>Batas keputusan dan pengingat sebelum kontrak habis</li></ul></div>
+    </div>
+    <div class="pane" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+     <div class="frame"><img src="img/peta.webp" width="1440" height="870" loading="lazy" alt="Peta atasan: siapa melapor ke siapa dan siapa yang memutuskan pengajuan. Data fiktif."></div>
+     <div class="txt"><h3>Peta atasan</h3><p>Siapa melapor ke siapa. Inilah dasar alur persetujuan dan laporan.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Penanda data yang perlu dirapikan</li><li><svg class="ck"><use href="#ck"/></svg>Atur atasan satu per satu atau massal</li></ul></div>
+    </div>
+    <div class="pane" role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+     <div class="frame"><img src="img/rekap.webp" width="1440" height="870" loading="lazy" alt="Rekap fitur dan progres pembangunan per fase."></div>
+     <div class="txt"><h3>Progres terlihat di sistem</h3><p>Selama pembangunan, Anda bisa melihat sendiri fitur mana yang sudah jadi, sebagian, atau belum.</p>
+      <ul class="ul"><li><svg class="ck"><use href="#ck"/></svg>Progres per fase dan per modul</li><li><svg class="ck"><use href="#ck"/></svg>Tiap modul bisa diuji begitu selesai</li></ul></div>
+    </div>
+   </section>
+
+   <section id="tanpa-paket" class="sec" data-t="Tanpa paket">
+    <div class="cap"><i></i>Tanpa paket</div>
+    <h2>Tidak ada Starter, Pro, atau Premium.</h2>
+    <p class="sub">Tidak ada fitur yang dikunci di paket yang lebih mahal. Semua modul dibuka untuk perusahaan Anda.</p>
+    <div class="card open">
+     <div class="tiers"><span class="tier">Starter</span><span class="tier">Pro</span><span class="tier">Premium</span><span class="all"><svg style="width:17px;height:17px"><use href="#ck"/></svg>Semua dibuka</span></div>
+     <div><div style="font-weight:600;font-size:15px">Termasuk tanpa biaya tambahan</div>
+      <div class="chips"><span>Semua modul</span><span>Semua pengguna</span><span>3 fitur andalan khusus</span><span>Setting & pelatihan</span><span>Pemeliharaan 24 bulan</span><span>1 PIC tetap</span></div></div>
+    </div>
+   </section>
+
+   <section id="fitur" class="sec" data-t="Fitur unggulan">
+    <div class="cap"><i></i>Fitur unggulan</div>
+    <h2>Yang membuat HR lebih tenang.</h2>
+    <div class="grid">
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i><h3>Absen anti titip</h3></div><p>Satu akun terkunci di satu HP. Akun tidak bisa dipakai login di HP lain, jadi tidak bisa dititipkan. Absen wajib selfie dan GPS di radius lokasi kerja.</p><span class="tg ok">Siap dicoba</span></div>
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg></i><h3>Persetujuan & surat ber-QR</h3></div><p>Memo berjenjang sampai direktur. Surat resmi terbit otomatis dan bisa dicek keasliannya lewat QR.</p><span class="tg ok">Siap dicoba</span></div>
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/></svg></i><h3>Kontrak tidak terlewat</h3></div><p>Pengingat kontrak dan masa percobaan. Akumulasi PKWT dihitung otomatis.</p><span class="tg ok">Siap dicoba</span></div>
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></i><h3>Laporan siap rapat</h3></div><p>Laporan SDM bulanan, dashboard eksekutif, dan aging karyawan. Unduh PDF dan Excel.</p><span class="tg ok">Siap dicoba</span></div>
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></i><h3>Hak akses & log audit</h3></div><p>Peran dari Super Admin sampai staf. Setiap perubahan data tercatat: siapa, kapan, apa.</p><span class="tg ok">Siap dicoba</span></div>
+     <div class="card fc"><div class="t"><i><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/></svg></i><h3>3 fitur andalan khusus</h3></div><p>Di luar semua modul, kami bangunkan tiga fitur yang paling Anda butuhkan. Gratis, disepakati di awal.</p><span class="tg pl">Sesuai kebutuhan</span></div>
+    </div>
+   </section>
+
+   <section id="modul" class="sec" data-t="Modul">
+    <div class="cap"><i></i>Modul</div>
+    <h2>Semua modul dalam satu sistem.</h2>
+    <p class="sub">Modul basic bisa dicoba paling lambat 7 hari. Modul lain dibangun bertahap sesuai aturan dan prosedur perusahaan, semuanya termasuk.</p>
+    <div class="card mods">
+     <div class="mh">Modul basic · dicoba ≤7 hari</div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.5 3.5-5 6.5-5s5.5 1.5 6.5 5"/></svg><b>Data karyawan & kontrak<small>Biodata, riwayat kontrak, mutasi, aging</small></b><em class="ok">Siap dicoba</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/></svg><b>Absensi HP<small>1 akun 1 HP, selfie, GPS, radius, rekap</small></b><em class="ok">Siap dicoba</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg><b>Persetujuan & surat<small>Memo berjenjang, surat PDF ber-QR</small></b><em class="ok">Siap dicoba</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><b>Laporan & dashboard<small>Laporan SDM bulanan, dashboard direksi</small></b><em class="ok">Siap dicoba</em></div>
+     <div class="mh">Dibangun bertahap · selesai ≤3 bulan</div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18"/></svg><b>Cuti & lembur<small>Saldo cuti, pengajuan, SPL</small></b><em class="bg">Bertahap</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg><b>Payroll & pajak<small>BPJS, PPh 21 TER, slip gaji</small></b><em class="bg">Bertahap</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 18l5-6 4 3 7-9"/></svg><b>KPI & tugas<small>KPI dari bukti tugas</small></b><em class="bg">Bertahap</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><b>Rekrutmen & tes kandidat<small>Permintaan tenaga kerja sampai onboarding</small></b><em class="bg">Bertahap</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2"/></svg><b>Klaim, pinjaman & aset<small>Reimburse, kasbon, inventaris</small></b><em class="bg">Bertahap</em></div>
+     <div class="mo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9"/></svg><b>Training & offboarding<small>Clearance, paklaring</small></b><em class="bg">Bertahap</em></div>
+    </div>
+   </section>
+
+   <section id="waktu" class="sec" data-t="Waktu pengerjaan">
+    <div class="cap"><i></i>Waktu pengerjaan</div>
+    <h2>Coba dalam 7 hari, selesai paling lama 3 bulan.</h2>
+    <div class="card time">
+     <div>
+      <div class="tli on"><small>Hari pertama</small><b>Demo & pemetaan kebutuhan</b><span>Aturan, prosedur, dan alur persetujuan perusahaan dicatat.</span></div>
+      <div class="tli on"><small>Paling lambat 7 hari</small><b>Modul basic bisa dicoba</b><span>Data karyawan, absensi HP, persetujuan, dan laporan.</span></div>
+      <div class="tli"><small>Bertahap</small><b>Modul lain diuji per modul</b><span>Tiap modul diserahkan dan diuji begitu selesai. Progres terlihat di sistem.</span></div>
+      <div class="tli"><small>Paling lama 3 bulan</small><b>Semua modul berjalan</b><span>Pelatihan pengguna, lalu pemeliharaan gratis 24 bulan.</span></div>
+     </div>
+     <div class="basis">
+      <b>Lama pembuatan dinilai dari</b>
+      <p>Makin banyak aturan dan prosedur khusus, makin lama pengerjaannya. Batas atasnya tetap 3 bulan.</p>
+      <div class="bars">
+       <div class="br"><span>Jumlah aturan</span><i><b style="width:70%"></b></i></div>
+       <div class="br"><span>Jumlah fitur</span><i><b style="width:85%"></b></i></div>
+       <div class="br"><span>Prosedur berlaku</span><i><b style="width:55%"></b></i></div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section id="lisensi" class="sec" data-t="Lisensi & layanan">
+    <div class="cap"><i></i>Lisensi & layanan</div>
+    <h2>Yang menjadi milik Anda.</h2>
+    <p class="sub">Bukan sewa. Sistemnya dipasang, diserahkan, dan dirawat.</p>
+    <div class="card kv">
+     <div class="kvr"><span>Lisensi</span><b>Milik perusahaan<small>Sistem menjadi aset Anda.</small></b></div>
+     <div class="kvr"><span>Server & data</span><b>Hosting & domain sendiri<small>Tidak berbagi server dengan perusahaan lain.</small></b></div>
+     <div class="kvr"><span>Biaya</span><b>Sekali pasang<small>Tanpa biaya bulanan, tidak per karyawan.</small></b></div>
+     <div class="kvr"><span>Paket</span><b>Tidak ada<small>Semua modul dibuka.</small></b></div>
+     <div class="kvr"><span>Penyesuaian</span><b>Desain, fitur, alur, hak akses<small>Mengikuti cara kerja perusahaan.</small></b></div>
+     <div class="kvr"><span>Penerapan</span><b>Setting & pelatihan<small>Untuk HR admin dan karyawan.</small></b></div>
+     <div class="kvr"><span>Pemeliharaan</span><b>Gratis 24 bulan<small>Perbaikan kendala dan penyesuaian kecil.</small></b></div>
+     <div class="kvr"><span>Pendampingan</span><b>Satu PIC tetap<small>Dari demo sampai kontrak selesai.</small></b></div>
+    </div>
+   </section>
+
+   <section id="banding" class="sec" data-t="Perbandingan">
+    <div class="cap"><i></i>Perbandingan</div>
+    <h2>Beda dengan HRIS langganan.</h2>
+    <div class="card cmpw">
+     <table class="cmp">
+      <thead><tr><th></th><th>HRIS langganan umumnya</th><th class="us">peopleOps Studio HRIS</th></tr></thead>
+      <tbody>
+       <tr><td>Biaya</td><td>Per karyawan, tiap bulan</td><td class="us">Sekali pasang, tanpa biaya bulanan</td></tr>
+       <tr><td>Paket</td><td>Fitur dibagi Starter, Pro, Premium</td><td class="us">Tanpa paket, semua modul terbuka</td></tr>
+       <tr><td>Lisensi</td><td>Sewa; berhenti bayar, berhenti pakai</td><td class="us">Milik perusahaan</td></tr>
+       <tr><td>Letak data</td><td>Server penyedia, dipakai bersama</td><td class="us">Server dan domain perusahaan Anda</td></tr>
+       <tr><td>Penyesuaian</td><td>Mengikuti fitur standar</td><td class="us">Disesuaikan, plus 3 fitur andalan gratis</td></tr>
+       <tr><td>Pendampingan</td><td>Tim support bergantian</td><td class="us">Satu PIC tetap sampai kontrak selesai</td></tr>
+      </tbody>
+     </table>
+    </div>
+    <p class="sub" style="font-size:13.5px">Hosting dan domain disediakan perusahaan; kelancaran akses mengikuti spesifikasi server, dan kami bantu memilihnya.</p>
+   </section>
+
+   <section id="faq" class="sec" data-t="Tanya jawab">
+    <div class="cap"><i></i>Tanya jawab</div>
+    <h2>Yang sering ditanyakan.</h2>
+    <div class="card faq">
+     <details><summary>Berapa lama sampai bisa dipakai?<svg><use href="#chev"/></svg></summary><p>Modul basic bisa dicoba paling lambat 7 hari. Seluruh modul selesai paling lama 3 bulan, tergantung jumlah aturan, fitur, dan prosedur yang berlaku di perusahaan.</p></details>
+     <details><summary>Benar tidak ada paket?<svg><use href="#chev"/></svg></summary><p>Benar. Tidak ada Starter, Pro, atau Premium. Semua modul dibuka untuk perusahaan Anda, tanpa fitur yang dikunci.</p></details>
+     <details><summary>Berapa biayanya?<svg><use href="#chev"/></svg></summary><p>Sekali bayar untuk pemasangan. Tidak ada biaya bulanan, dan pemeliharaan 24 bulan pertama gratis. Rincian kami sampaikan setelah demo.</p></details>
+     <details><summary>Bagaimana mencegah titip absen?<svg><use href="#chev"/></svg></summary><p>Satu akun hanya bisa login di satu HP terdaftar; di HP lain tidak bisa masuk. Ganti HP harus lewat reset oleh HR. Absen juga wajib selfie dan GPS di dalam radius lokasi kerja, dan absen yang janggal ditandai untuk ditinjau.</p></details>
+     <details><summary>Server seperti apa yang dibutuhkan?<svg><use href="#chev"/></svg></summary><p>Hosting dan domain milik perusahaan. Kami bantu memilih spesifikasi yang sesuai sebelum pemasangan.</p></details>
+     <details><summary>Data dari aplikasi lama bisa dipindah?<svg><use href="#chev"/></svg></summary><p>Bisa. Data karyawan dari Excel atau hasil ekspor sistem lama kami impor, lalu dicek bersama sebelum dipakai.</p></details>
+     <details><summary>Karyawan pakai HP apa?<svg><use href="#chev"/></svg></summary><p>Saat ini portal karyawan dibuka dari browser HP. Aplikasi Android sedang disiapkan.</p></details>
+     <details><summary>Kalau ada kendala setelah dipasang?<svg><use href="#chev"/></svg></summary><p>Hubungi PIC Anda langsung. Selama 24 bulan, perbaikan kendala dan penyesuaian kecil gratis.</p></details>
+    </div>
+   </section>
+
+   <section id="demo" class="end" data-t="Jadwalkan demo">
+    <div>
+     <h2>Lihat langsung dalam satu demo.</h2>
+     <p>Demo online dengan contoh alur perusahaan Anda. Tanpa komitmen.</p>
+     <div class="cta"><a class="btn r" href="https://wa.me/62816309339?text=Halo%20peopleOps%20Studio%2C%20saya%20ingin%20jadwalkan%20demo%20HRIS." target="_blank" rel="noopener">Jadwalkan demo via WhatsApp</a><a class="btn w" href="mailto:studiopeopleops@gmail.com?subject=Demo%20Pops%20HRIS">Kirim email</a></div>
+    </div>
+    <div class="ct"><div><small>WhatsApp</small><b>0816-309-339</b></div><div><small>Email</small><b>studiopeopleops@gmail.com</b></div></div>
+   </section>
+
+   <div class="foot"><span>© 2026 peopleOps Studio HRIS</span><span>Semua nama dan angka di tangkapan layar adalah data contoh fiktif.</span></div>
+  </div>
+ </div>
+</div>
+
+<script>
+(function(){
+ var intro=document.getElementById('intro'),seen=false;
+ try{seen=sessionStorage.getItem('popsIntro')==='1'}catch(e){}
+ var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function done(){if(intro.classList.contains('out'))return;intro.classList.add('out');setTimeout(function(){intro.classList.add('gone')},750);try{sessionStorage.setItem('popsIntro','1')}catch(e){}}
+ if(seen||rm){intro.classList.add('gone')}else{
+  var L=document.getElementById('inLine');
+  setTimeout(function(){L.textContent='Memuat data karyawan…'},900);setTimeout(function(){L.textContent='Selamat datang.'},1500);
+  setTimeout(done,2200);document.getElementById('inSkip').addEventListener('click',done);intro.addEventListener('click',done)}
+ var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+ function sel(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+ tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t)});t.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){e.preventDefault();var n=tabs[(i+k+tabs.length)%tabs.length];sel(n);n.focus()}})});
+ var secs=[].slice.call(document.querySelectorAll('section[data-t]'));
+ var crumb=document.getElementById('crumb'),links=[].slice.call(document.querySelectorAll('.side a.it,.mnav a'));
+ function spy(){var y=window.scrollY+140,cur=secs[0];secs.forEach(function(s){if(s.getBoundingClientRect().top+window.scrollY<=y)cur=s});var id='#'+cur.id;crumb.textContent=cur.getAttribute('data-t');
+  links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===id)})}
+ addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</body>
+</html>
